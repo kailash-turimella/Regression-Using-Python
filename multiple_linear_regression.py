@@ -18,7 +18,7 @@ import numpy as np
 import pandas as pd
 
 # Importing datasets
-dataset = pd.read_csv('50_Startups.csv')
+dataset = pd.read_csv('50_Startups.csv')   # Make sure the dataset is present in the working directory.
 X = dataset.iloc[:,:-1].values     # Independent         # All rows of all columns except the last one
 y = dataset.iloc[:,4].values       # Dependent           # All rows of the third column
 
@@ -41,7 +41,7 @@ X = X[:,1:]   # Removing fist column
 """
 # Splitting the data set into training set and test set
 from sklearn.model_selection import train_test_split 
-X_train,X_test,y_train,y_test = train_test_split(X,y, test_size = 0.2,random_state = 0) # test size = 20% 
+X_train,X_test,y_train,y_test = train_test_split(X,y, test_size = 0.2) # test size = 20% 
 
 
 # Fitting Multiple linear regression to training set
