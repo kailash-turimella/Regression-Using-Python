@@ -24,7 +24,7 @@ lin_reg.fit(X,y)
 
 # Fitting polynomial regression to dataset
 from sklearn.preprocessing import PolynomialFeatures
-poly_reg = PolynomialFeatures(degree = 4) # going to transform X into an exponential form(X_poly)##degree = power
+poly_reg = PolynomialFeatures(degree = 4)
 X_poly = poly_reg.fit_transform(X)
 poly_reg.fit(X_poly,y)
 lin_reg2 = LinearRegression()
@@ -50,7 +50,7 @@ plt.ylabel('Salary')
 plt.show()
 
 # Predicting Result with Linear Regression
-print(lin_reg.predict([[6.5]]))                            # Level who's salary you wish to predict
+print(lin_reg.predict([[6.5]]))
 
 # Predicting Result with Polynomial Regression
-print(lin_reg2.predict(poly_reg.fit_transform([[6.5]])))   # Level who's salary you wish to predict
+print(lin_reg2.predict(poly_reg.fit_transform([[6.5]])))
