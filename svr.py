@@ -1,7 +1,8 @@
 """
 SVR
- Like in linear regression, in svr there is a straight line going through all the points too
- but in svr there is a 'tube' around this line with width epsilon
+Support Vector Regression
+ Like in linear regression, in svr there is a straight line going through all the points
+ but in svr there is a 'tube' around this line with width, epsilon
  epsilon is measured vertically(along the y-axis) and not perpendicular to the tube
  SVR tries to fit as many points as possible in this 'tube'
 """
@@ -12,8 +13,8 @@ import pandas as pd
 
 # Importing datasets
 dataset = pd.read_csv('Position_Salaries.csv')
-X = dataset.iloc[:,1:2].values      # Independent         # All rows of all columns except the last one
-y_ = dataset.iloc[:,2].values       # Dependent           # All rows of the third column
+X = dataset.iloc[:,1:2].values      # Independent variables         # All rows of all columns except the last one
+y_ = dataset.iloc[:,2].values       # Dependent variables           # All rows of the third column
 y=np.reshape(y_,(-1,1))             # Convert it into an array
 
 # Use only if you have enough variables
@@ -25,7 +26,7 @@ X_train,X_test,y_train,y_test = train_test_split(X,y, test_size = 0.2,random_sta
 
 # Feature scaling
 from sklearn.preprocessing import StandardScaler
-# Bringing both, the independant and dependant variables to the smae scale
+# Bringing both, the independant and dependant variables to the same scale
 sc_X = StandardScaler()
 sc_y = StandardScaler()
 X = sc_X.fit_transform(X)
@@ -34,8 +35,8 @@ y = sc_y.fit_transform(y)
 
 # Fitting the regression model to dataset
 from sklearn.svm import SVR
-regressor = SVR(kernel = 'rbf')  # One of the most popular non-linear kernel (adds dimension)
-regressor.fit(X,y)               # Learns the corelation
+regressor = SVR(kernel = 'rbf')  # One of the most popular non-linear kernel
+regressor.fit(X,y)               # Learns the correlation
 
 
 # Predicting Result with SVR Regression
