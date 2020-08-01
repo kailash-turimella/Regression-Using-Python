@@ -11,8 +11,8 @@ There are different conditions for deciding when the algorithm stops.
 
 Summary:
   The independant variable are graphed
-  They are then divided into sections(a leaf) based on information entropy
-  The predicted value of y is the average value of all the independant variables in that perticular leaf
+  They are then divided into sections(terminal nodes) based on information entropy
+  The predicted value of y is the average value of all the independant variables in that perticular terminal node
 
 """
 
@@ -33,24 +33,12 @@ from sklearn.model_selection import train_test_split
 X_train,X_test,y_train,y_test = train_test_split(X,y, test_size = 0.2,random_state = 0)
 """
 
-# Feature scaling
-#        bringing the age and salary to a specific range
-"""
-from sklearn.preprocessing import StandardScaler
-sc_X = StandardScaler()
-sc_y = StandardScaler()
-X_train = sc_X.fit_transform(X_train)
-X_test = sc_X.transform(X_test)          # Already fitted
-y_train = sc_y.fit_transform(y_train)
-"""
-
-
 # Fitting the regression model to dataset
 from sklearn.tree import DecisionTreeRegressor
 regressor = DecisionTreeRegressor()
 regressor.fit(X,y)
 
-# Predicting Result with Polynomial Regression
+# Predicting Result with Decision Tree Regression
 y_pred = regressor.predict([[6.5]])
 
 # Visualising Regression Results
